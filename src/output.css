@@ -2225,8 +2225,24 @@ video {
 }
 
 @media not all and (min-width: 900px) {
+  .max-lmd\:mb-\[2\] {
+    margin-bottom: 2;
+  }
+
+  .max-lmd\:mb-2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .max-lmd\:mb-3 {
+    margin-bottom: 0.75rem;
+  }
+
   .max-lmd\:w-full {
     width: 100%;
+  }
+
+  .max-lmd\:w-\[90\%\] {
+    width: 90%;
   }
 }
 
