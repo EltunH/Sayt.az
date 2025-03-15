@@ -2,6 +2,7 @@ const openClose = document.getElementById('openClose')
 const customerContainer = document.getElementById("customerContainer")
 const down = document.getElementById("down")
 const header = document.getElementById("header")
+const btn = document.querySelectorAll('#hostingBtn button')
 const hostingBtn = document.getElementById("hostingBtn")
 const hostingBorder = document.getElementById("hostingBorder")
 const hostingBorder1 = document.getElementById("hostingBorder1")
@@ -62,8 +63,8 @@ function toDown() {
     })
 }
 
+
 function changeBtnBg(x, y) {
-    const btn = document.querySelectorAll('#hostingBtn button')
     btn.forEach(item => {
         item.style.background = 'white'
         item.style.color = '#94a3c8'
@@ -72,21 +73,12 @@ function changeBtnBg(x, y) {
     x.style.background = '#a271f2'
     x.style.color = 'white'
     x.style.fontWeight = '500'
-    if (y == 0) {
-        priceValue.innerHTML = '₼5'
-        priceValue1.innerHTML = '₼10'
-        priceValue2.innerHTML = '₼20'
-        priceMonth.innerHTML = '/ay'
-        priceMonth1.innerHTML = '/ay'
-        priceMonth2.innerHTML = '/ay'
-    } else {
-        priceValue.innerHTML = '₼60'
-        priceValue1.innerHTML = '₼120'
-        priceValue2.innerHTML = '₼240'
-        priceMonth.innerHTML = '/il'
-        priceMonth1.innerHTML = '/il'
-        priceMonth2.innerHTML = '/il'
-    }
+    priceValue.innerHTML = `₼${5 * y}`
+    priceValue1.innerHTML = `₼${10 * y}`
+    priceValue2.innerHTML = `₼${20 * y}`
+    priceMonth.innerHTML = `/${y == 1 ? 'ay' : 'il'}`
+    priceMonth1.innerHTML = `/${y == 1 ? 'ay' : 'il'}`
+    priceMonth2.innerHTML = `/${y == 1 ? 'ay' : 'il'}`
 }
 
 function changeBorder(x) {
