@@ -151,7 +151,7 @@ const eccomerceData = [
     },
     {
         "id": 43,
-        "name": "Məhsuk Haqqında",
+        "name": "Məhsul Haqqında",
         "price": 200,
         "type": "ecommerce"
     }
