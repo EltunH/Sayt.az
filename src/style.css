@@ -4,6 +4,14 @@
     animation: toDown 1s linear infinite;
 }
 
+.left2 {
+    left: calc(100% - 22px);
+}
+
+.bgPurp {
+    background: #a271f2;
+}
+
 @keyframes toDown {
     0% {
         opacity: 0;

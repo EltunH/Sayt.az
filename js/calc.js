@@ -26,7 +26,7 @@ let totalPageCount = 0
 const result = () => {
         let totalPrice = totalRange + totalCheck + totalEccomerce + totalLogoPrice + totalPageCount
         toplamQiymet.innerHTML = totalPrice > 450 ? totalPrice : 450
-}
+};
 
 const changeValue = () => {
         let sValue = +sehifeInput.value * 100
@@ -36,57 +36,58 @@ const changeValue = () => {
         sehifePrice.innerHTML = totalPageCount
         azn.innerHTML = totalPageCount
         result()
-}
-changeValue()
+};
+changeValue();
 
 
 const showRanges = () => {
         rangeData.forEach((item) => {
-                rangeContainer.innerHTML +=
-                        `
-                        <div class="flex items-center gap-1">
-                                <label>${item.name}</label>
-                                <input class="h-5 w-5 cursor-pointer appearance-none rounded-md border border-gray-400 transition-all duration-300 
-                                        hover:border-[#A271F2] hover:bg-[#E9D8FD] active:scale-95 
-                                        checked:border-[#A271F2] checked:bg-[#a99ac1] 
-                                        relative before:absolute before:left-1/2 before:top-[40%] before:-translate-x-1/2 before:-translate-y-1/2 
-                                        before:text-white before:text-sm before:font-bold before:content-['✔'] before:opacity-0 
-                                        checked:before:opacity-100" onchange="changeRange(this, ${item.price})" type='checkbox' />
-                        </div>
-         `;
+                rangeContainer.innerHTML += `
+                        <div class="">
+                                <label onclick="toggle('d${item.id}', 'x${item.id}')" for="inp${item.id}" class="cursor-pointer flex items-center justify-between">${item.name}
+                                        <div id="d${item.id}" class="min-w-[50px] transition-all duration-200 h-[25px] rounded-[15px] bg-[#e5e7eb] relative flex items-center">
+                                                <div id="x${item.id}" class="w-[20px] transition-all duration-200 absolute h-[20px] left-[2px] bg-white rounded-[50%]"></div>
+                                        </div>
+                                </label>
+                                <input id="inp${item.id}" type='checkbox' class="hidden" onchange="changeRange(this, ${item.price})" />
+                        </div>`
         });
 
         checkData.forEach((item) => {
                 checkContainer.innerHTML += `
                                 <div class="flex items-center gap-1">   
-                                        <input class="h-5 w-5 cursor-pointer appearance-none rounded-md border border-gray-400 transition-all duration-300 
-                                                hover:border-[#A271F2] hover:bg-[#E9D8FD] active:scale-95 
-                                                checked:border-[#A271F2] checked:bg-[#a99ac1] 
+                                        <input id="${item.id}" class="h-5 w-5 cursor-pointer appearance-none rounded-md border border-gray-400 transition-all duration-300 
+                                                checked:hover:shadow-[0_0_1px_5px_#a271f250] active:scale-95 
+                                                checked:border-[#A271F2] checked:bg-[#a271f2] 
                                                 relative before:absolute before:left-1/2 before:top-[40%] before:-translate-x-1/2 before:-translate-y-1/2 
-                                                before:text-white before:text-sm before:font-bold before:content-['✔'] before:opacity-0 
+                                                before:text-white before:text-sm before:font-bold before:content-['✓'] before:opacity-0 
                                                 checked:before:opacity-100" onchange="changeCheck(this, ${item.price})" type='checkbox' />
-                                        <label>${item.name}</label>
-                                </div>
-        `;
+                                        <label for="${item.id}" class="cursor-pointer">${item.name}</label>
+                                </div>`
         });
 
         eccomerceData.forEach((item) => {
                 eccomerceContainer.innerHTML += `
-                <div class="flex items-center gap-1">
-                        <label>${item.name}</label>
-                        <input class="h-5 w-5 cursor-pointer appearance-none rounded-md border border-gray-400 transition-all duration-300 
-                                hover:border-[#A271F2] hover:bg-[#E9D8FD] active:scale-95 
-                                checked:border-[#A271F2] checked:bg-[#a99ac1] 
-                                relative before:absolute before:left-1/2 before:top-[40%] before:-translate-x-1/2 before:-translate-y-1/2 
-                                before:text-white before:text-sm before:font-bold before:content-['✔'] before:opacity-0 
-                                checked:before:opacity-100" onchange="changeEccomerce(this, ${item.price})" type='checkbox' />
-                </div>
-        `;
+                        <div class="">
+                                <label onclick="toggle('d${item.id}', 'x${item.id}')" for="inp${item.id}" class="cursor-pointer items-center flex justify-between">${item.name}
+                                        <div id="d${item.id}" class="min-w-[50px] transition-all duration-200 h-[25px] rounded-[15px] bg-[#e5e7eb] relative flex items-center">
+                                                <div id="x${item.id}" class="w-[20px] transition-all duration-200 absolute h-[20px] left-[2px] bg-white rounded-[50%]"></div>
+                                        </div>
+                                </label>
+                                <input id="inp${item.id}" type='checkbox' class="hidden" onchange="changeEccomerce(this, ${item.price})" />
+                        </div>`
         });
 
         rangeSum.innerHTML = totalRange;
         checkSum.innerHTML = totalCheck;
         eccomerceSum.innerHTML = totalEccomerce
+};
+
+function toggle(divId, childId){
+        const myId = document.getElementById(`${childId}`)
+        const parId = document.getElementById(`${divId}`)
+        myId.classList.toggle('left2')
+        parId.classList.toggle('bgPurp')
 };
 
 const changeRange = (checkbox, price) => {
